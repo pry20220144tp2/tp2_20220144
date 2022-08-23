@@ -1,62 +1,76 @@
-from distutils.command.config import config
-from flask import Flask, redirect, render_template, request, url_for, flash
+
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
-from flask_login import LoginManager,login_user, logout_user, login_required
-
-from config import config
-import models
-
-#Models
-from models.ModelUser import ModelUser
-
-#Entities
-from models.entities.User import User
+import MySQLdb.cursors
+import re
 
 app = Flask(__name__)
 
-db = MySQL(app)
-login_manager_app = LoginManager(app)
+app.secret_key='qwerty'
 
-@login_manager_app.user_loader
-def load_user(id):
-    return ModelUser.get_by_id(db,id)
+app.config['MYSQL_HOST']='localhost'
+app.config['MYSQL_USER']='root'
+app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_DB']='tp2_db'
 
+mysql = MySQL(app)
 
 @app.route('/')
-def index():
-    return redirect(url_for('login'))
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        #print(request.form['username'])
-        print(request.form['password'])
-        user=User(0,request.form['username'],request.form['password'])
-        logged_user=ModelUser.login(db,user)
-        if logged_user != None:
-            if logged_user.password:
-                login_user(logged_user)
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid Password...")
-                return render_template('auth/login.html')
+    mesage=''
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+        email = request.form['email']
+        password = request.form['password']
+        cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM user WHERE email = % s AND password = % s', (email, password, ))
+        user = cursor.fetchone()
+        if user: 
+            session['loggedin']=True
+            session['userid']=user['userid']
+            session['username']=user['name']
+            session['email']=user['email']
+            mesage = 'Bienvenido'
+            return render_template('user.html', mesage=mesage)
         else:
-            flash("User not found...")
-            return render_template('auth/login.html')
-    else:
-        return render_template('auth/login.html')
+            mesage='Por favor ingrese un email o contraseña correcta'
+    return render_template('login.html', mesage = mesage)
 
 @app.route('/logout')
 def logout():
-    logout_user()
+    session.pop('loggedin', None)
+    session.pop('username', None)
+    session.pop('email', None)
     return redirect(url_for('login'))
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    mesage=''
+    if request.method == 'POST' and 'redname' in request.form and 'name' in request.form and 'password' in request.form and 'email' in request.form:
+        nombrered=request.form['redname']
+        userName=request.form['name']
+        password=request.form['password']
+        email=request.form['email']
+        cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM user WHERE email = % s', (email, ))
+        account=cursor.fetchone()
+        if account:
+            mesage='Cuenta ya Existe'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            mesage='Email invalido'
+        elif not nombrered or not userName or not password or not email:
+            mesage='Por favor inserte el dato que falta'
+        else:
+            cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)', (nombrered, userName, email, password, ))
+            mysql.connection.commit()
+            mesage='Cuenta creada satisfactoriamente'
+        return render_template('user.html', mesage=mesage)
 
-if __name__ == '__main__':
-    app.config.from_object(config['development'])
+    elif request.method == 'POST':
+        mesage='Por favor complete el formulario'
+    return render_template('register.html', mesage=mesage)
+
+if __name__=="__main__":
     app.run()
 
 
