@@ -13,11 +13,7 @@
                 <img class="mb-4" src="{{ url_for('static', filename='img/img1.png') }}" alt="" width="300" height="300">
                 {% if mesage is defined and mesage %} 
                     <div class="alert alert-warning">{{ mesage }}</div>
-                {% endif %} 
-                <div class="form-group">
-                    <label for="redname">Nombre de Red</label>
-                    <input type="text" class="form-control" id="redname" name="redname" placeholder="Enter redname" name="redname">
-                </div>
+                {% endif %}
                 <div class="form-group">
                     <label for="name">Nombre de Usuario</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" name="name">

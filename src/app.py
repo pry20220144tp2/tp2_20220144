@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
@@ -11,7 +10,7 @@ app.secret_key='qwerty'
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
-app.config['MYSQL_DB']='tp2_db'
+app.config['MYSQL_DB']='dbtp2'
 
 mysql = MySQL(app)
 
@@ -23,13 +22,13 @@ def login():
         email = request.form['email']
         password = request.form['password']
         cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user WHERE email = % s AND password = % s', (email, password, ))
-        user = cursor.fetchone()
-        if user: 
+        cursor.execute('SELECT * FROM administrador_global WHERE correoAG = % s AND passwordAG = % s', (email, password, ))
+        administrador_global = cursor.fetchone()
+        if administrador_global: 
             session['loggedin']=True
-            session['userid']=user['userid']
-            session['username']=user['name']
-            session['email']=user['email']
+            session['name']=administrador_global['idAG']
+            session['username']=administrador_global['nameAG']
+            session['email']=administrador_global['correoAG']
             mesage = 'Bienvenido'
             return render_template('user.html', mesage=mesage)
         else:
@@ -46,22 +45,21 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     mesage=''
-    if request.method == 'POST' and 'redname' in request.form and 'name' in request.form and 'password' in request.form and 'email' in request.form:
-        nombrered=request.form['redname']
+    if request.method == 'POST' and 'name' in request.form and 'password' in request.form and 'email' in request.form:
         userName=request.form['name']
         password=request.form['password']
         email=request.form['email']
         cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user WHERE email = % s', (email, ))
+        cursor.execute('SELECT * FROM administrador_global WHERE correoAG = % s', (email, ))
         account=cursor.fetchone()
         if account:
             mesage='Cuenta ya Existe'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             mesage='Email invalido'
-        elif not nombrered or not userName or not password or not email:
+        elif not userName or not password or not email:
             mesage='Por favor inserte el dato que falta'
         else:
-            cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)', (nombrered, userName, email, password, ))
+            cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s)', (userName, email, password, ))
             mysql.connection.commit()
             mesage='Cuenta creada satisfactoriamente'
         return render_template('user.html', mesage=mesage)
