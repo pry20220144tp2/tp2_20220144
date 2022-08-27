@@ -27,7 +27,7 @@ def login():
         if administrador_global: 
             session['loggedin']=True
             session['name']=administrador_global['idAG']
-            session['username']=administrador_global['nameAG']
+            session['username']=administrador_global['nombreAG']
             session['email']=administrador_global['correoAG']
             mesage = 'Bienvenido'
             return render_template('user.html', mesage=mesage)
@@ -69,6 +69,6 @@ def register():
     return render_template('register.html', mesage=mesage)
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True)
 
 

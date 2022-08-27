@@ -14,3 +14,16 @@
     text-align: center;
     padding-top: 15px;
 }
+.button{
+    padding-top: 10px;
+}
+.container1{
+    float:left;
+    padding-left: 50px;
+    padding-top:10px;
+}
+.container2{
+    float:right;
+    padding-right:300px;
+    padding-top: 50px;
+}
