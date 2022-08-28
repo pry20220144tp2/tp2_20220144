@@ -17,7 +17,7 @@
 
     <!-- TITLE OF SITE -->
     <title>Antiphishing Pishing Club</title>
-
+    
     <!-- imagen que va arriba en el chrome -->
     <link rel="shortcut icon" type="image/icon" href="static/images/logo/favicon.png" />
 
@@ -52,9 +52,10 @@
     <!--responsive.css-->
     <link rel="stylesheet" href="static/css/responsive.css">
 
+    <!--
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
+-->
 </head>
 
 <body>
@@ -196,7 +197,7 @@
                     </div><!-- /.col-->
                     <div class="col-md-2 col-sm-4">
                         <div class="single-new-project">
-                            <a href="#" class="slide-btn">
+                            <a href="{{url_for('project')}}" class="slide-btn">
                                 Empieza ahora
                             </a>
                         </div><!-- /.single-new-project-->
@@ -225,7 +226,8 @@
                             <!--/.hm-foot-title-->
                             <div class="hm-foot-para">
                                 <p>
-                                    La mejor alternativa para erradicar la Ingeniería Social esta aquí. ¿Qué esperas para probarlo?
+                                    La mejor alternativa para erradicar la Ingeniería Social esta aquí. ¿Qué esperas
+                                    para probarlo?
                                 </p>
                             </div>
                             <!--/.hm-foot-para-->
@@ -348,11 +350,6 @@
                 <div class="col-sm-5">
                     <div class="foot-menu pull-right
 						">
-                        <ul>
-                            <li><a href="#">Legal</a></li>
-                            <li><a href="#">Mapa del sitio</a></li>
-                            <li><a href="#">Política de privacidad</a></li>
-                        </ul>
                     </div><!-- /.foot-menu-->
                 </div>
                 <!--/.col-->

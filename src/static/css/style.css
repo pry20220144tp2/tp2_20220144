@@ -394,12 +394,12 @@ html,body{
 	 border: 1px solid #fff;
 }
 .single-slide-item.slide-1 {
-	background-image:url(../../assets/images/banner/banner1.jpg);
+	background-image:url(../../static/images/banner/banner1.jpg);
 	position:relative;
 	z-index:1;
 }
 .single-slide-item.slide-2 {
-	background-image:url(../../assets/images/banner/banner2.jpg);
+	background-image:url(../../static/images/banner/banner2.jpg);
 	position:relative;
 	z-index:1;
 }
@@ -709,7 +709,7 @@ a:focus.service-btn{
 --------------------------------------*/
 .statistics{
 	position:relative;
-	background:url(../../assets/images/counter/counter-banner.jpg)no-repeat;
+	background:url(../../static/images/counter/counter-banner.jpg)no-repeat;
 	background-position:center;
 	background-size:cover;
 	padding: 98px 0 81px;
@@ -939,16 +939,16 @@ a:focus.service-btn{
 /*team-box-bg*/
 
 .team-box-bg-1{
-	background: url(../../assets/images/team/team.jpg) no-repeat;
+	background: url(../../static/images/team/team.jpg) no-repeat;
 }
 .team-box-bg-2{
-	background: url(../../assets/images/team/team3.jpg) no-repeat;
+	background: url(../../static/images/team/team3.jpg) no-repeat;
 }
 .team-box-bg-3{
-	background: url(../../assets/images/team/team2.jpg) no-repeat;
+	background: url(../../static/images/team/team2.jpg) no-repeat;
 }
 .team-box-bg-4{
-	background: url(../../assets/images/team/team3.jpg) no-repeat;
+	background: url(../../static/images/team/team3.jpg) no-repeat;
 }/*team-box-bg*/
 
 
@@ -1333,7 +1333,7 @@ a:active.learn-btn{
 --------------------------------------*/
 .contact {
     padding: 115px 0 120px;
-    background:url(../../assets/images/footer/map.jpg)no-repeat;
+    background:url(../../static/images/footer/map.jpg)no-repeat;
 	background-position:center;
 	background-size: cover;
 	position: relative;
@@ -1754,7 +1754,7 @@ a:active.learn-btn{
 
 .about-part{
 	position:relative;
-	background:url(../../assets/images/about/about-banner.jpg)no-repeat;
+	background:url(../../static/images/about/about-banner.jpg)no-repeat;
 	background-position:center;
 	background-size:cover;
 	padding: 124px 0 144px;
