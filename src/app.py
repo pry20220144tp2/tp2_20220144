@@ -4,7 +4,7 @@ import MySQLdb.cursors
 import re
 
 app = Flask(__name__)
-
+#hola
 app.secret_key = 'qwerty'
 
 app.config['MYSQL_HOST'] = 'localhost'
