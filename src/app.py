@@ -16,8 +16,8 @@ mysql = MySQL(app)
 
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def indice():
+    return render_template('indice.html')
 
 @app.route('/about')
 def about():
