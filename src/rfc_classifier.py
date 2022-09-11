@@ -33,19 +33,19 @@ def getResult(url):
         try:
             
             prediction=model.predict(x_new[0])
-            print("Prediction is",prediction)
+            print("La predicción es",prediction)
             if prediction == -1:
-                res= "Suspected Phishing URL"
+                res= "URL sospechoso de phishing"
                 
             else:
-                res= "Legitimate URL"
+                res= "URL seguro/legítimo"
                 
             
         except:
-            print("Exception occured!")
-            res= "Suspected Phishing URL"
+            print("¡Ocurrió una excepción!")
+            res= "URL sospechoso de phishing"
 
-        print("The URL is predicted as : ", res)  
+        print("La predicción del URL es : ", res)  
         #print("Time taken to generate dataset : ",(x_new[1])," seconds")
 
         #Add the url into the csv file if it is not already present
@@ -54,9 +54,9 @@ def getResult(url):
         
 
     else:
-        print("The features extracted for the URL is : ",status[1])
-        print("The status of the url in the URL file is : ",status[0])
-        print("Time taken to find the status in URL file : ",status[2]," seconds")
+        print("Las características extraídas del URL son : ",status[1])
+        print("El estado del URL en la base de datos es : ",status[0])
+        print("Tiempo transcurrido para encontrar el estado del URL en la base de datos : ",status[2]," segundos")
         
         
         #print(status)

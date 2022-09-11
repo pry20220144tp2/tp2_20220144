@@ -345,7 +345,7 @@ def request_url(url,domain,soup):
 
             try:
                 percentage = success/float(i) * 100
-                print("Request URL percentage = ",percentage)
+                print("Solicitud de porcentaje de URL = ",percentage)
                 
                 if percentage < 22.0 :
                     return 1
@@ -387,7 +387,7 @@ def url_of_anchor(url,domain,soup):
 
             try:
                 percentage = unsafe / float(i) * 100
-                print("URL of Anchor percentage = ",percentage)
+                print("URL del porcentaje de anclaje = ",percentage)
                 
                 if percentage < 31.0:
                     return 1
@@ -429,7 +429,7 @@ def links_in_tags(url,domain,soup):
                 i=i+1
             try:
                 percentage = success / float(i) * 100
-                print("Links in tags percentage = ",percentage)
+                print("Enlaces en porcentaje de etiquetas = ",percentage)
                 
                 if percentage < 17.0 :
                     return 1
@@ -639,7 +639,7 @@ def age_of_domain(whois_response):
             return -1
     
     except:
-        print("Age of domain exception")
+        print("Edad de la excepción del dominio")
         return -1
 
 
@@ -795,7 +795,7 @@ def statistical_report(domain):
                 #data['Stastical_Report']=1
         except:
             #data['Stastical_Report']=-1
-            print ('Connection problem. Please check your internet connection!')
+            print ('Problema de conexión. ¡Por favor revise su conexion a internet!')
             return -1
 
 
@@ -905,10 +905,10 @@ def generate_data_set(url):
     for i in dataset:
         count+=1       
         
-    print("Enter URL : ",url)
-    print("\nNumber of features extracted = ", count)
-    print("Time taken to generate dataset =%.2f"%l[1]," seconds")
-    print("The generated dataset is : ")
+    print("Ingresa un URL : ",url)
+    print("\nNúmero de características extraídas = ", count)
+    print("Tiempo transcurrido para generar el dataset =%.2f"%l[1]," segundos")
+    print("El dataset generado es : ")
     print(dataset)
     print("\n")
     [print (key,':',value) for key,value in data.items()]

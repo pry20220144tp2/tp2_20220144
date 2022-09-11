@@ -32,7 +32,7 @@ def main():
     else:
     
         # file/folder is not found
-        print(f'"{file_path}" is not found')       
+        print(f'"{file_path}" no se ha encontrado')       
 
 
 
@@ -42,12 +42,12 @@ def remove_file(path):
 	if not os.remove(path):
 
 		# success message
-		print(f"{path} is removed successfully")
+		print(f"{path} fue eliminado satisfactoriamente")
 
 	else:
 
 		# failure message
-		print(f"Unable to delete {path}") 
+		print(f"No se puede eliminar {path}") 
 
 
 def get_file_or_folder_age(path):

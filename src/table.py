@@ -68,7 +68,7 @@ def getDetails(url):
         today = time.strftime('%Y-%m-%d')
         today = datetime.strptime(today, '%Y-%m-%d')
         reg_length = abs((e_date - today).days)
-        print("Registration length = ",reg_length)
+        print("Largo del registro = ",reg_length)
         
     except:
         reg_length='-'
@@ -93,12 +93,12 @@ def getDetails(url):
     print("\n\n\n")
 
     #Creating table using tabulate
-    mydict = [{domain,"DOMAIN NAME"},
-          {c_date,"CREATION DATE"},
-          {e_date,"EXPIRATION DATE"},
+    mydict = [{domain,"NOMBRE DEL DOMINIO"},
+          {c_date,"FECHA DE CREACIÓN"},
+          {e_date,"FECHA DE EXPIRACIÓN"},
           {reg,"REGISTRAR"},
-          {length,"URL LENGTH"},
-          {reg_length,"DOMAIN EXPIRATION"}
+          {length,"LARGO DEL URL"},
+          {reg_length,"EXPIRACIÓN DEL DOMINIO"}
           ]
   
 

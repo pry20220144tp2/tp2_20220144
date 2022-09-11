@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.metrics import roc_curve, auc, roc_auc_score
 
-data=pd.read_csv('uci dataset.csv')
+data=pd.read_csv('dataset_phishing.csv')
 
 data
 
