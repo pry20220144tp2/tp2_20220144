@@ -2,7 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import os
+import rfc_classifier
+import table
+from flask_mysqldb import MySQL
 
+from flask import Flask
+from flask import Blueprint, flash, g
+from flask import jsonify
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 #hola
 app.secret_key = 'qwerty'
@@ -72,7 +80,7 @@ def logout():
 @app.route('/user')
 def user():
     if 'email' in session and session['rol'] == "Administrador Global":
-        return render_template('user.html')
+        return redirect(url_for('phishing'))
     elif 'email' in session and session['rol'] == "Administrador de Red":
         return "Hola, esta es la pantalla para el admin de red"
     else:
@@ -107,6 +115,51 @@ def register():
         mesage = 'Por favor complete el formulario'
     return render_template('register.html', mesage=mesage)
 
+UPLOAD_FOLDER= '/files'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','py'])
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+@app.route('/result')
+def result():
+    	
+	urlname  = request.args['name']
+	res  =  rfc_classifier.getResult(urlname)
+	return jsonify(res)  # passes a list as argument
+    	
+@app.route('/details')
+def details():
+	
+	urlname  = request.args['name']
+	tab=table.getDetails(urlname)
+	return jsonify(tab)
 
+@app.route('/features')
+def features():
+    	return render_template('features.html')
+
+
+@app.route('/phishing', methods = ['GET', 'POST'])
+def phishing():
+	if request.method == 'POST':
+		if 'file' not in request.files:
+			flash('no file part')
+			return "false"
+		file = request.files['file']
+		if file.filename == '':
+			flash('no select file')
+			return 'false'
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			contents = file.read()
+			with open("files/URL.txt","wb") as f:
+				f.write(contents)
+			file.save = (os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			
+			return render_template("index.html")
+			
+	
+	return  render_template("index.html")
 if __name__ == "__main__":
     app.run(debug=True)

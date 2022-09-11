@@ -1,0 +1,3 @@
+URL,STATUS,FEATURE SET
+https://www.youtube.com/,Suspected Phishing URL,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
+https://www.youtube.com,Suspected Phishing URL,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
