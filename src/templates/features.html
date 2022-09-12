@@ -92,181 +92,181 @@
         <tbody>
         <tr>
           <td>Having IP Address</td>
-          <td>Domain has IP address : -1<br>Domain does not have IP address : 1</td>
+          <td>El dominio tiene dirección IP : -1<br>El dominio no tiene dirección IP : 1</td>
           <td><b><span id="ip"></span></b></td>
         </tr>
 
         <tr>
           <td>URL Length</td>
-          <td>URL Length < 54 : 1<br>URL Length >= 54 and URL Length <= 75 : 0<br>URL Length > 75 : -1</td>
+          <td>Largo del URL < 54 : 1<br>Largo del URL >= 54 and Largo del URL <= 75 : 0<br>Largo del URL > 75 : -1</td>
           <td><b><span id="url_length"></span></b></td>
         </tr>
 
         <tr>
           <td>Shortening Service</td>
-          <td>Contains tinyURL : -1<br>Otherwise : 1</td>
+          <td>El URL es acortado : -1<br>De lo contrario : 1</td>
           <td><b><span id="ss"></span></b></td>
         </tr>
 
         <tr>
           <td>Having At Symbol</td>
-          <td>URL has ‘@’ symbol : -1<br>URL does not have ‘@’ symbol : 1</td>
+          <td>El URL contiene '@' : -1<br>El URL no contiene '@' : 1</td>
           <td><b><span id="at"></span></b></td>
         </tr>
 
         <tr>
           <td>Double Slash Redirecting</td>
-          <td>Position of the last occurrence of '//' in the URL > 7 : -1<br>Position of the last occurrence of '//' in the URL <= 7 : 1</td>
+          <td>Posición de la última aparición de '//' en la URL > 7 : -1<br>Posición de la última aparición de '//' en la URL <= 7 : 1</td>
           <td><b><span id="double_slash"></span></b></td>
         </tr>
 
         <tr>
             <td>Prefix Suffix</td>
-            <td>Domain has '-' symbol : -1<br>Domain does not have '-' symbol : 1</td>
+            <td>El dominio contiene '-' : -1<br>El dominio no contiene '-' : 1</td>
             <td><b><span id="prefix_suffix"></span></b></td>
         </tr>
 
         <tr>
             <td>Having Sub Domain</td>
-            <td>Dots in domain part = 1 : 1<br>Dots in domain part = 2 : 0<br>Dots in domain part > 2 : -1</td>
+            <td>Puntos en la parte del dominio = 1 : 1<br>Puntos en la parte del dominio = 2 : 0<br>Puntos en la parte del dominio > 2 : -1</td>
             <td><b><span id="sub_domain"></span></b></td>
         </tr>
 
         <tr>
             <td>SSL Final State</td>
-            <td>Having HTTPS and issuer is trusted and age of certificate >= 1 year : 1<br>Having HTTPS and issuer is not trusted : 0<br>Domain does not have HTTPS : -1</td>
+            <td>Tener HTTPS y el emisor es de confianza y la antigüedad del certificado >= 1 year : 1<br>Tener HTTPS y el emisor no es de confianza : 0<br>EL dominio no tiene HTTPS : -1</td>
             <td><b><span id="ssl"></span></b></td>
         </tr>
 
         <tr>
             <td>Domain Registration Length</td>
-            <td>Domain expiration <= 1 year : -1<br>Domain expiration > 1 year : 1</td>
+            <td>Expiración del dominio <= 1 year : -1<br>Expiración del dominio > 1 year : 1</td>
             <td><b><span id="reg_length"></span></b></td>
         </tr>
 
         <tr>
             <td>Favicon</td>
-            <td>Favicon loaded from external domain : -1<br>Favicon loaded from the domain shown in the address bar : 1</td>
+            <td>El favicon fue cargado de un dominio externo : -1<br>El favicon fue cargado del dominio ingresado : 1</td>
             <td><b><span id="favs"></span></b></td>
         </tr>
 
         <tr>
             <td>Port</td>
-            <td>Contains port of preferred status : -1<br>Otherwise : 1</td>
+            <td>Contiene puerto de estado preferido : -1<br>De lo contrario : 1</td>
             <td><b><span id="port"></span></b></td>
         </tr>
         
         <tr>
             <td>HTTPS Token</td>
-            <td>Domain has HTTPS token : -1<br>Domain does not have HTTPS token : 1</td>
+            <td>El dominio tiene token HTTPS : -1<br>El dominio no tiene token HTTPS : 1</td>
             <td><b><span id="token"></span></b></td>
         </tr>
         
         <tr>
             <td>Request URL</td>
-            <td>Percentage of request URL < 22% : 1<br>Percentage of request URL >= 22% and < 61% : 0<br>Percentage of request URL >= 61% : -1</td>
+            <td>Porcentaje del URL solicitado < 22% : 1<br>Porcentaje del URL solicitado >= 22% y < 61% : 0<br>Porcentaje del URL solicitado >= 61% : -1</td>
             <td><b><span id="request"></span></b></td>
         </tr>
 
         <tr>
             <td>URL of Anchor</td>
-            <td>Percentage of URL of anchor < 31% : 1<br>Percentage of URL anchor >= 31% and <= 67% : 0<br>Percentage of URL anchor > 67% : -1</td>
+            <td>Porcentaje de URL de anclaje < 31% : 1<br>Porcentaje de URL de anclaje >= 31% y <= 67% : 0<br>Porcentaje de URL de anclaje > 67% : -1</td>
             <td><b><span id="anchor"></span></b></td>
         </tr>
 
         <tr>
             <td>Links in Tags</td>
-            <td>Percentage of links in tags < 17% : 1<br>Percentage of links in tags >= 17% and <= 81% : 0<br>Percentage of links in tags > 81% : -1</td>
+            <td>Porcentaje de enlaces en etiquetas < 17% : 1<br>Porcentaje de enlaces en etiquetas >= 17% y <= 81% : 0<br>Porcentaje de enlaces en etiquetas > 81% : -1</td>
             <td><b><span id="tags"></span></b></td>
         </tr>
 
         <tr>
             <td>SFH</td>
-            <td>SFH is 'about:blank' or is empty : -1<br>SFH refers to a different domain : 0<br>Otherwise : 1</td>
+            <td>SFH es 'about:blank' o está vacío : -1<br>SFH se refiere a un dominio diferente : 0<br>De lo contrario : 1</td>
             <td><b><span id="sfh"></span></b></td>
         </tr>
 
         <tr>
             <td>Submitting to Email</td>
-            <td>Having 'mail()' or 'mailto:' function to submit user information : -1<br>Does not have 'mail()' or 'mailto:' function : 1</td>
+            <td>Tiene la función 'mail()' o 'mailto:' : -1<br>No tiene la función 'mail()' o 'mailto:' : 1</td>
             <td><b><span id="email"></span></b></td>
         </tr>
 
         <tr>
             <td>Abnormal URL</td>
-            <td>URL does not have host name : -1<br>URL has host name : 1</td>
+            <td>El URL no tiene nombre de host : -1<br>El URL tiene nombre de host : 1</td>
             <td><b><span id="abnormal"></span></b></td>
         </tr>
 
         <tr>
             <td>Redirect</td>
-            <td>Number of times website redirected <= 1 : 1<br>Number of times website redirected >= 2 and < 4 : 0<br>Number of times website redirected >= 4 : -1</td>
+            <td>Número de veces que se redirige el sitio web <= 1 : 1<br>Número de veces que se redirige el sitio web >= 2 y < 4 : 0<br>Número de veces que se redirige el sitio web >= 4 : -1</td>
             <td><b><span id="redirect"></span></b></td>
         </tr>
 
         <tr>
             <td>On Mouseover</td>
-            <td>On mouseover changes the status bar : -1<br>On mouseover does not change status bar : 1</td>
+            <td>Al pasar el mouse cambia la barra de estado : -1<br>Al pasar el mouse no cambia la barra de estado : 1</td>
             <td><b><span id="on"></span></b></td>
         </tr>
 
         <tr>
             <td>Right Click</td>
-            <td>Right click disabled : -1<br>Right click not disabled : 1</td>
+            <td>Click derecho deshabilitado : -1<br>Click derecho no deshabilitado : 1</td>
             <td><b><span id="click"></span></b></td>
         </tr>
 
         <tr>
             <td>PopUpWindow</td>
-            <td>Pop up window contains text field : -1<br>Pop up window does not contain text field : 1</td>
+            <td>La ventana emergente contiene un campo de texto : -1<br>La ventana emergente no contiene un campo de texto : 1</td>
             <td><b><span id="popup"></span></b></td>
         </tr>
 
         <tr>
             <td>Iframe</td>
-            <td>Uses iframe tag : -1<br>No iframe redirection : 1</td>
+            <td>Utiliza la etiqueta iframe : -1<br>No hay redirección a iframe : 1</td>
             <td><b><span id="iframe"></span></b></td>
         </tr>
 
         <tr>
             <td>Age of Domain</td>
-            <td>Domain age >= 6 months : 1<br>Domain age < 6 months : -1</td>
+            <td>Edad del dominio >= 6 meses : 1<br>Edad del dominio < 6 meses : -1</td>
             <td><b><span id="age"></span></b></td>
         </tr>
 
         <tr>
             <td>DNS Record</td>
-            <td>No DNS record for the domain : -1<br>Have DNS record for the domain : 1</td>
+            <td>No hay registro DNS para el dominio : -1<br>Tiene registro DNS para el dominio : 1</td>
             <td><b><span id="dns"></span></b></td>
         </tr>
 
         <tr>
             <td>Web Traffic</td>
-            <td>Website rank < 100,000 : 1<br>Website rank > 100,000 : 0<br>No website traffic : -1</td>
+            <td>Clasificación del sitio web < 100,000 : 1<br>Clasificación del sitio web > 100,000 : 0<br>Sin tráfico del sitio web : -1</td>
             <td><b><span id="web"></span></b></td>
         </tr>
 
         <tr>
             <td>Page Rank</td>
-            <td>Page rank < 0.2 : -1<br>Page rank >= 0.2 : 1</td>
+            <td>Rango de página < 0.2 : -1<br>Rango de página >= 0.2 : 1</td>
             <td><b><span id="rank"></span></b></td>
         </tr>
 
         <tr>
             <td>Google Index</td>
-            <td>Web page indexed by Google : 1<br>Web page not indexed by Google : -1</td>
+            <td>Página web indexada por Google : 1<br>Página web no indexada por Google : -1</td>
             <td><b><span id="index"></span></b></td>
         </tr>
 
         <tr>
             <td>Links Poiniting to Page</td>
-            <td>Number of links pointing to the webpage = 0 : -1<br>Number of links pointing to the webpage > 0 and <= 2 : 0<br>Number of links pointing to the webpage > 2 : 1</td>
+            <td>Número de enlaces que apuntan a la página web = 0 : -1<br>Número de enlaces que apuntan a la página web > 0 y <= 2 : 0<br>Número de enlaces que apuntan a la página web > 2 : 1</td>
             <td><b><span id="links"></span></b></td>
         </tr>
 
         <tr>
             <td>Statistical Report</td>
-            <td>Host belongs to top phishing IPs : -1<br>Host does not belong to top phishing IPs : 1</td>
+            <td>El host pertenece a las principales direcciones IP de phishing : -1<br>El host no pertenece a las principales direcciones IP de phishing : 1</td>
             <td><b><span id="report"></span></b></td>
         </tr>
 
