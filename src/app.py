@@ -109,7 +109,7 @@ def register():
                            (userName, email, password, rol, ))
             mysql.connection.commit()
             mesage = 'Cuenta creada satisfactoriamente'
-        return render_template('login.html', mesage=mesage)
+        return render_template('register.html', mesage=mesage)
 
     elif request.method == 'POST':
         mesage = 'Por favor complete el formulario'
