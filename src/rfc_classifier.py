@@ -35,15 +35,15 @@ def getResult(url):
             prediction=model.predict(x_new[0])
             print("La predicción es",prediction)
             if prediction == -1:
-                res= "URL sospechoso de phishing"
+                res= "es un URL sospechoso de phishing"
                 
             else:
-                res= "URL seguro/legítimo"
+                res= "es URL seguro/legítimo"
                 
             
         except:
             print("¡Ocurrió una excepción!")
-            res= "URL sospechoso de phishing"
+            res= "es un URL sospechoso de phishing"
 
         print("La predicción del URL es : ", res)  
         #print("Time taken to generate dataset : ",(x_new[1])," seconds")
