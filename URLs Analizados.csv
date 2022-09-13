@@ -1,11 +1,1 @@
 URL,ESTADO,CARACTERISTICAS
-www.amazon.com,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 0, -1]"
-https://github.com/marcosrm7/LibreriaTF_SEM9,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
-www.pequenossistematicos.com,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, -1]"
-https://www.education.oracle.com/,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1]"
-https://www.oracle.com/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
-https://www.oracle.com/education,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
-https://www.microsoft.com/,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 0, -1]"
-https://www.microsoft.com/es,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
-https://www.ibm.com,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
-https://www.amazon.com/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
