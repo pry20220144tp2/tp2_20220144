@@ -10,8 +10,8 @@ from flask import Flask
 from flask import Blueprint, flash, g
 from flask import jsonify
 from werkzeug.utils import secure_filename
+
 app = Flask(__name__)
-# hola
 app.secret_key = 'qwerty'
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -139,7 +139,7 @@ def result():
 
     urlname = request.args['name']
     res = clasificador_randomforest.getResult(urlname)
-    return jsonify(res)  # passes a list as argument
+    return jsonify(res)
 
 
 @app.route('/detalleurl')

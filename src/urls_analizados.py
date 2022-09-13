@@ -2,7 +2,6 @@ import csv
 import time
 import os
 
-#To search data in file
 def url_search(url):
 
     start_time=time.time()
@@ -12,7 +11,6 @@ def url_search(url):
     with open('URLs Analizados.csv','a',newline='') as f , open('URLs Analizados.csv','r') as csvfile:
         
         file_path = 'URLs Analizados.csv'
-        # check if size of file is 0
         if os.path.getsize(file_path) == 0:
 
             header = ['URL', 'ESTADO','CARACTERISTICAS']
@@ -43,7 +41,6 @@ def url_search(url):
     else:   
         return 'NOT FOUND'
 
-#To write data to file
 def url_update(url,result,list):
        
     data = []

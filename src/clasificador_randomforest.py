@@ -11,10 +11,8 @@ import urls_analizados
 
 def getResult(url):
 
-    # load the model from disk
     model = pickle.load(open('rfc_model', 'rb'))
 
-    # Searching for the input url in URL file
     x_input = url
     status = urls_analizados.url_search(x_input)
     l = []
@@ -38,12 +36,10 @@ def getResult(url):
 
         except:
             print("¡Ocurrió una excepción!")
-            res = "es un URL sospechoso de phishing"
+            res = "es un URL de phishing"
 
         print("La predicción del URL es : ", res)
-        #print("Time taken to generate dataset : ",(x_new[1])," seconds")
 
-        # Add the url into the csv file if it is not already present
         urls_analizados.url_update(x_input, res, l[0])
         l.append(res)
 
@@ -53,7 +49,6 @@ def getResult(url):
         print("Tiempo transcurrido para encontrar el estado del URL en la base de datos : ",
               status[2], " segundos")
 
-        # print(status)
         li = [int(i.strip('[]')) for i in status[1].split(',')]
         l.append(li)
         l.append(status[0])
