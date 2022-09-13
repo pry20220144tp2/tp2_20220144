@@ -108,11 +108,13 @@ def register():
         account = cursor.fetchone()
         if account:
             mesage = 'Cuenta ya Existe'
+        elif not userName:
+            mesage = 'Por favor ingrese Nombre'
         elif not re.match(r'[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$', userName):
             mesage = 'El nombre solo puede tener letras y máximo 1 palabra'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             mesage = 'Ingrese sus datos / datos inválidos'
-        elif not userName or not password or not email or not rol:
+        elif not password or not email or not rol:
             mesage = 'Por favor inserte el dato que falta'
         else:
             cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s, % s)',
