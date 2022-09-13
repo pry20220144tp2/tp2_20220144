@@ -5,8 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 
-import feature_extraction
-import url_file
+import caracteristicas_extraidas
+import urls_analizados
 
 
 def getResult(url):
@@ -16,13 +16,13 @@ def getResult(url):
 
     # Searching for the input url in URL file
     x_input = url
-    status = url_file.url_search(x_input)
+    status = urls_analizados.url_search(x_input)
     l = []
 
     if (status == 'NOT FOUND'):
 
         x_new = []
-        x_new = feature_extraction.generate_data_set(x_input)
+        x_new = caracteristicas_extraidas.generate_data_set(x_input)
         l.append(x_new[0])
         x_new[0] = np.array(x_new[0]).reshape(1, -1)
 
@@ -44,7 +44,7 @@ def getResult(url):
         #print("Time taken to generate dataset : ",(x_new[1])," seconds")
 
         # Add the url into the csv file if it is not already present
-        url_file.url_update(x_input, res, l[0])
+        urls_analizados.url_update(x_input, res, l[0])
         l.append(res)
 
     else:

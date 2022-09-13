@@ -1,2 +1,4 @@
 URL,ESTADO,CARACTERISTICAS
 https://bcpzonasegurabeta.viabcp.com/#/iniciar-sesion,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
+www.amazon.com/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+www.youtube.com/es,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1]"
