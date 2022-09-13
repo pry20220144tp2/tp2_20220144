@@ -135,9 +135,9 @@ def details():
 	tab=table.getDetails(urlname)
 	return jsonify(tab)
 
-@app.route('/features')
-def features():
-    	return render_template('features.html')
+@app.route('/detalleurl')
+def detalleurl():
+    	return render_template('detalleurl.html')
 
 
 @app.route('/phishing', methods = ['GET', 'POST'])
