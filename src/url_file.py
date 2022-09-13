@@ -9,13 +9,13 @@ def url_search(url):
     s=[]
     flag='True'
 
-    with open('URL file.csv','a',newline='') as f , open('URL file.csv','r') as csvfile:
+    with open('URLs Analizados.csv','a',newline='') as f , open('URLs Analizados.csv','r') as csvfile:
         
-        file_path = 'URL file.csv'
+        file_path = 'URLs Analizados.csv'
         # check if size of file is 0
         if os.path.getsize(file_path) == 0:
 
-            header = ['URL', 'STATUS','FEATURE SET']
+            header = ['URL', 'ESTADO','CARACTERISTICAS']
             writeCSV = csv.writer(f,delimiter=',')
             writeCSV.writerow(header)
             flag='False'
@@ -51,7 +51,7 @@ def url_update(url,result,list):
     data.append(result)
     data.append(list)
    
-    with open('URL file.csv','a',newline='') as csvfile:
+    with open('URLs Analizados.csv','a',newline='') as csvfile:
                 
         writeCSV = csv.writer(csvfile,delimiter=',')
         writeCSV.writerow(data)
