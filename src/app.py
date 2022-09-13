@@ -4,7 +4,6 @@ import MySQLdb.cursors
 import re
 import os
 import clasificador_randomforest
-import table
 from flask_mysqldb import MySQL
 
 from flask import Flask
@@ -12,7 +11,7 @@ from flask import Blueprint, flash, g
 from flask import jsonify
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
-#hola
+# hola
 app.secret_key = 'qwerty'
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -27,25 +26,31 @@ mysql = MySQL(app)
 def indice():
     return render_template('indice.html')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/service')
 def service():
     return render_template('service.html')
 
+
 @app.route('/project')
 def project():
     return render_template('project.html')
+
 
 @app.route('/team')
 def team():
     return render_template('team.html')
 
+
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -70,12 +75,14 @@ def login():
             mesage = 'Por favor ingrese un email o contraseña correcta'
     return render_template('login.html', mesage=mesage)
 
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('username', None)
     session.pop('email', None)
     return redirect(url_for('login'))
+
 
 @app.route('/user')
 def user():
@@ -85,6 +92,7 @@ def user():
         return "Hola, esta es la pantalla para el admin de red"
     else:
         return "Hola, esta es la pantalla para el usuario"
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -115,51 +123,51 @@ def register():
         mesage = 'Por favor complete el formulario'
     return render_template('register.html', mesage=mesage)
 
-UPLOAD_FOLDER= '/files'
+
+UPLOAD_FOLDER = '/files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','py'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'py'])
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 @app.route('/result')
 def result():
-    	
-	urlname  = request.args['name']
-	res  =  clasificador_randomforest.getResult(urlname)
-	return jsonify(res)  # passes a list as argument
-    	
-@app.route('/details')
-def details():
-	
-	urlname  = request.args['name']
-	tab=table.getDetails(urlname)
-	return jsonify(tab)
+
+    urlname = request.args['name']
+    res = clasificador_randomforest.getResult(urlname)
+    return jsonify(res)  # passes a list as argument
+
 
 @app.route('/detalleurl')
 def detalleurl():
-    	return render_template('detalleurl.html')
+    return render_template('detalleurl.html')
 
 
-@app.route('/phishing', methods = ['GET', 'POST'])
+@app.route('/phishing', methods=['GET', 'POST'])
 def phishing():
-	if request.method == 'POST':
-		if 'file' not in request.files:
-			flash('no file part')
-			return "false"
-		file = request.files['file']
-		if file.filename == '':
-			flash('no select file')
-			return 'false'
-		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			contents = file.read()
-			with open("files/URL.txt","wb") as f:
-				f.write(contents)
-			file.save = (os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			
-			return render_template("index.html")
-			
-	
-	return  render_template("index.html")
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('no file part')
+            return "false"
+        file = request.files['file']
+        if file.filename == '':
+            flash('no select file')
+            return 'false'
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            contents = file.read()
+            with open("files/URL.txt", "wb") as f:
+                f.write(contents)
+            file.save = (os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            return render_template("index.html")
+
+    return render_template("index.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
