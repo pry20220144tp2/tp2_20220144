@@ -736,7 +736,7 @@ def google_index(url):
     try:
     
         site=search(url, 5)
-        print("Site = ",site)
+        print("Sitio = ",site)
         
         if site:
             return 1
@@ -905,10 +905,10 @@ def generate_data_set(url):
     for i in dataset:
         count+=1       
         
-    print("Ingresa un URL : ",url)
+    print("URL ingresado : ",url)
     print("\nNúmero de características extraídas = ", count)
     print("Tiempo transcurrido para generar el dataset =%.2f"%l[1]," segundos")
-    print("El dataset generado es : ")
+    print("La fila generada en el dataset es : ")
     print(dataset)
     print("\n")
     [print (key,':',value) for key,value in data.items()]

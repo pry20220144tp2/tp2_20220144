@@ -103,7 +103,7 @@ def getDetails(url):
   
 
     # display table
-    print(tabulate(mydict, tablefmt="grid"))   
+    #print(tabulate(mydict, tablefmt="grid"))   
 
      
     
