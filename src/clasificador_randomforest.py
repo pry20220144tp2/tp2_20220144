@@ -12,7 +12,7 @@ import url_file
 def getResult(url):
 
     # load the model from disk
-    model = pickle.load(open('rfc_model', 'rb'))
+    model = pickle.load(open('modelo_randomforest', 'rb'))
 
     # Searching for the input url in URL file
     x_input = url

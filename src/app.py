@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import os
-import rfc_classifier
+import clasificador_randomforest
 import table
 from flask_mysqldb import MySQL
 
@@ -101,7 +101,7 @@ def register():
         if account:
             mesage = 'Cuenta ya Existe'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            mesage = 'Email invalido'
+            mesage = 'Correo electrónico inválido'
         elif not userName or not password or not email or not rol:
             mesage = 'Por favor inserte el dato que falta'
         else:
@@ -125,7 +125,7 @@ def allowed_file(filename):
 def result():
     	
 	urlname  = request.args['name']
-	res  =  rfc_classifier.getResult(urlname)
+	res  =  clasificador_randomforest.getResult(urlname)
 	return jsonify(res)  # passes a list as argument
     	
 @app.route('/details')
