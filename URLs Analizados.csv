@@ -1,1 +1,6 @@
 URL,ESTADO,CARACTERISTICAS
+https://www.amazon.com/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+http://bit.ly/CUENTA-ERROR,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1]"
+http://bit.ly,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+https://www.google.com.pe/,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, 1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+bit.ly,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"

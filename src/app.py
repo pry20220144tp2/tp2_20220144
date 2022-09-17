@@ -72,7 +72,7 @@ def login():
             mesage = 'Bienvenido'
             return redirect(url_for('user'))
         else:
-            mesage = 'Por favor ingrese un email o contraseña correcta'
+            mesage = 'Por favor ingrese un email, contraseña o rol correcto'
     return render_template('login.html', mesage=mesage)
 
 
@@ -107,15 +107,19 @@ def register():
             'SELECT * FROM administrador_global WHERE correoAG = % s', (email, ))
         account = cursor.fetchone()
         if account:
-            mesage = 'Cuenta ya Existe'
+            mesage = 'La cuenta ya existe'
         elif not userName:
             mesage = 'Por favor ingrese Nombre'
         elif not re.match(r'[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$', userName):
             mesage = 'El nombre solo puede tener letras y máximo 1 palabra'
-        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            mesage = 'Ingrese sus datos / datos inválidos'
-        elif not password or not email or not rol:
-            mesage = 'Por favor inserte el dato que falta'
+        elif not email:
+            mesage = 'Por favor ingrese Correo'
+        elif not re.match(r'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$', email):
+            mesage = 'Correo inválido'
+        elif not password:
+            mesage = 'Por favor ingrese Contraseña'
+        elif rol == "Escoge una opción":
+            mesage = 'Por favor escoja un rol'
         else:
             cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s, % s)',
                            (userName, email, password, rol, ))
