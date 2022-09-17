@@ -3,7 +3,92 @@
 
 {% block content %}
 <html lang="en" dir="ltr">
- 
+  <style>
+@keyframes dot-keyframes {
+  0% {
+    opacity: 0.4;
+    transform: scale(1, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1, 1);
+  }
+}
+.loading-dots {
+  text-align: center;
+  width: 100%;
+}
+.loading-dots--dot {
+  animation: dot-keyframes 1.5s infinite ease-in-out;
+  background-color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin: 15px;
+}
+.loading-dots--dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.loading-dots--dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+
+h1{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 40pt;
+  margin-top: 50px;
+  color:white;
+  position: center;
+}
+
+#dataTable{
+  margin-left: auto; 
+  margin-right: auto;
+  table-layout: auto;
+  width: 50%;
+  position: relative;
+}
+
+#dataTable{
+  border: 1px solid #333333;
+  border-style:hidden;
+}
+
+#dataTable tr,td{
+  
+ /* border-collapse: collapse;*/
+  border: 1px solid #ddd;
+  width:10%;
+  /*padding: 15px;*/
+  color:black;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#dataTable tr:nth-child(even){background-color:#d1d1d1 ;}
+
+#dataTable tr:nth-child(odd){background-color:#396e7e ;}
+
+
+#reload{
+  position : absolute;
+  left : 790px;
+  bottom : 20px;  
+}
+
+#redirect{
+  position : absolute;
+  left : 580px;
+  bottom : 20px;
+}
+  </style>
 <body style="background-image: url('https://www.bbva.com/wp-content/uploads/2018/10/Portada-Phishing-1920x1441.jpg');">
 </body>
 <center style="margin-top: 90px;">
