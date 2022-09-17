@@ -5,7 +5,7 @@ import re
 import os
 import clasificador_randomforest
 from flask_mysqldb import MySQL
-
+from flask_login import login_required, LoginManager, login_user, logout_user
 from flask import Flask
 from flask import Blueprint, flash, g
 from flask import jsonify
@@ -20,6 +20,9 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'antiphish_db'
 
 mysql = MySQL(app)
+
+
+
 
 
 @app.route('/')
@@ -83,6 +86,21 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('login'))
 
+@app.route('/usuarios')
+def usuarios():
+    return "Hola, es una ventana para usuarios"
+    
+@app.route('/empresas')
+def empresas():
+    return "Hola, es una ventana para empresas"
+
+@app.route('/roles')
+def roles():
+    return "Hola, es una ventana para roles"
+
+@app.route('/correo')
+def correo():
+    return "Hola, es una ventana para correo"
 
 @app.route('/user')
 def user():
@@ -156,6 +174,7 @@ def detalleurl():
 
 
 @app.route('/phishing', methods=['GET', 'POST'])
+
 def phishing():
     if request.method == 'POST':
         if 'file' not in request.files:
