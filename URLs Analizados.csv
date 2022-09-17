@@ -1,1 +1,4 @@
 URL,ESTADO,CARACTERISTICAS
+https://web.whatsapp.com/,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
+,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, -1]"
+https://www.twitch.tv/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
