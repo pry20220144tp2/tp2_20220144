@@ -88,19 +88,19 @@ def logout():
 
 @app.route('/usuarios')
 def usuarios():
-    return "Hola, es una ventana para usuarios"
+    return render_template("usuarios.html")
     
 @app.route('/empresas')
 def empresas():
-    return "Hola, es una ventana para empresas"
+    return render_template("empresas.html")
 
 @app.route('/roles')
 def roles():
-    return "Hola, es una ventana para roles"
+    return render_template("roles.html")
 
 @app.route('/correo')
 def correo():
-    return "Hola, es una ventana para correo"
+    return render_template("correo.html")
 
 @app.route('/user')
 def user():
