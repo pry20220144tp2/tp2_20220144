@@ -5,23 +5,32 @@ import re
 import os
 import clasificador_randomforest
 from flask_mysqldb import MySQL
-from flask_login import login_required, LoginManager, login_user, logout_user
 from flask import Flask
 from flask import Blueprint, flash, g
 from flask import jsonify
 from werkzeug.utils import secure_filename
-
+from functools import wraps
+from flask_login import LoginManager, login_user, logout_user, login_required
 app = Flask(__name__)
 app.secret_key = 'qwerty'
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_USER'] = 'root'   
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'antiphish_db'
 
+# Models:
+from models.ModelUser import ModelUser
+
+# Entities:
+from models.entities.User import User
 mysql = MySQL(app)
 
+login_manager_app = LoginManager(app)
 
+@login_manager_app.user_loader
+def load_user(id):
+    return ModelUser.get_by_id(mysql, id)
 
 
 
@@ -54,36 +63,33 @@ def team():
 def blog():
     return render_template('blog.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    mesage = ''
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form and 'rol' in request.form:
-        email = request.form['email']
-        password = request.form['password']
-        rol = request.form['rol']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute(
-            'SELECT * FROM administrador_global WHERE correoAG = % s AND passwordAG = % s AND rol = % s', (email, password, rol, ))
-        administrador_global = cursor.fetchone()
-        if administrador_global:
-            session['loggedin'] = True
-            session['name'] = administrador_global['idAG']
-            session['username'] = administrador_global['nombreAG']
-            session['email'] = administrador_global['correoAG']
-            session['rol'] = administrador_global['rol']
-            mesage = 'Bienvenido'
-            return redirect(url_for('user'))
+    if request.method == 'POST':
+        # print(request.form['username'])
+        # print(request.form['password'])
+        user = User(0, request.form['nombre'], request.form['password'], request.form['rol'])
+        logged_user = ModelUser.login(mysql, user)
+        if logged_user != None:
+            if logged_user.password:
+                login_user(logged_user)
+                return redirect(url_for('phishing'))
+            else:
+                flash("Invalid password...")
+                return render_template('login.html')
         else:
-            mesage = 'Por favor ingrese un email o contraseña correcta'
-    return render_template('login.html', mesage=mesage)
+            flash("User not found...")
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
+
+
+
 
 
 @app.route('/logout')
 def logout():
-    session.pop('loggedin', None)
-    session.pop('username', None)
-    session.pop('email', None)
+    logout_user()
     return redirect(url_for('login'))
 
 @app.route('/usuarios')
@@ -99,17 +105,20 @@ def roles():
     return "Hola, es una ventana para roles"
 
 @app.route('/correo')
+@login_required
 def correo():
     return "Hola, es una ventana para correo"
 
 @app.route('/user')
+@login_required
 def user():
-    if 'email' in session and session['rol'] == "Administrador Global":
+    if session['rol'] == "Administrador Global":
         return redirect(url_for('phishing'))
-    elif 'email' in session and session['rol'] == "Administrador de Red":
+    elif session['rol'] == "Administrador de Red":
         return "Hola, esta es la pantalla para el admin de red"
     else:
-        return "Hola, esta es la pantalla para el usuario"
+        return "hola"
+
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -139,7 +148,7 @@ def register():
                            (userName, email, password, rol, ))
             mysql.connection.commit()
             mesage = 'Cuenta creada satisfactoriamente'
-        return render_template('register.html', mesage=mesage)
+        return render_template('login.html', mesage=mesage)
 
     elif request.method == 'POST':
         mesage = 'Por favor complete el formulario'
@@ -170,7 +179,7 @@ def detalleurl():
 
 
 @app.route('/phishing', methods=['GET', 'POST'])
-
+@login_required
 def phishing():
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -191,6 +200,13 @@ def phishing():
 
     return render_template("index.html")
 
+def status_401(error):
+    return redirect(url_for('login'))
+
+def status_404(error):
+    return "<h1>Pagina no encontrada</h1>", 404
 
 if __name__ == "__main__":
+    app.register_error_handler(401,status_401)
+    app.register_error_handler(404,status_404)
     app.run(debug=True)
