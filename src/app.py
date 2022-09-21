@@ -68,7 +68,7 @@ def login():
     if request.method == 'POST':
         # print(request.form['username'])
         # print(request.form['password'])
-        user = User(0, request.form['nombre'], request.form['password'], request.form['rol'])
+        user = User(0, request.form['nombre'], request.form['password'], 0)
         logged_user = ModelUser.login(mysql, user)
         if logged_user != None:
             if logged_user.password:
