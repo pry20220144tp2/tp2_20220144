@@ -93,14 +93,17 @@ def logout():
     return redirect(url_for('login'))
 
 @app.route('/usuarios')
+@login_required
 def usuarios():
     return render_template("usuarios.html")
     
 @app.route('/empresas')
+@login_required
 def empresas():
     return render_template("empresas.html")
 
 @app.route('/roles')
+@login_required
 def roles():
     return render_template("roles.html")
 
