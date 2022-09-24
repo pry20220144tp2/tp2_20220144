@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_file
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -11,9 +11,9 @@ from flask import jsonify
 from werkzeug.utils import secure_filename
 from functools import wraps
 from flask_login import LoginManager, login_user, logout_user, login_required
+from os import getcwd
 app = Flask(__name__)
 app.secret_key = 'qwerty'
-
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'   
 app.config['MYSQL_PASSWORD'] = ''
@@ -95,7 +95,8 @@ def logout():
 @app.route('/usuarios')
 @login_required
 def usuarios():
-    return render_template("usuarios.html")
+	return render_template('usuarios.html')
+
     
 @app.route('/empresas')
 @login_required
@@ -212,6 +213,11 @@ def status_401(error):
 
 def status_404(error):
     return "<h1>Pagina no encontrada</h1>", 404
+
+@app.route('/dowload')
+def download():
+    a = "URLs Analizados.csv"
+    return send_file(a, as_attachment=True)
 
 if __name__ == "__main__":
     app.register_error_handler(401,status_401)

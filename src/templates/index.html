@@ -38,13 +38,16 @@
 .loading-dots--dot:nth-child(3) {
   animation-delay: 1s;
 }
-
+.bottom{
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
 
 h1{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 40pt;
   margin-top: 50px;
-  color:white;
+  color:rgb(0, 0, 0);
   position: center;
 }
 
@@ -99,17 +102,20 @@ h1{
   <div class="single-url">
     <div class="input-group input-group-lg" style="width: 850px;margin-top: 50px">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-lg">URL:</span>
       </div>
 
 
-      <input type="text" class="form-control" placeholder="Ingrese el URL para validar" id="url" value="">
-
-      <button type="submit" id="submit" class="btn getResult btn-info btn-lg mb-2"
-        style="margin-left: 10px">Validar</button>
-      <button type="submit" id="clear" class="btn getResult btn-info btn-lg mb-2" onclick="clearField()"
-        style="margin-left: 10px">Limpiar</button>
-
+      <input type="text" class="form-control" placeholder="Ingrese el URL para validar" id="url" value="" style="margin-bottom: 20px" >
+      <div class="bottom">
+        <button type="submit" id="submit" class="btn getResult btn-info btn-lg mb-2"
+        style="margin-left: 20px">Validar</button>
+        <button type="submit" id="clear" class="btn getResult btn-info btn-lg mb-2" onclick="clearField()"
+        style="margin-left: 20px">Limpiar</button>
+        <a  href="{{url_for('download')}}">
+          <button type="submit" class="btn getResult btn-info btn-lg mb-2" style="margin-left: 20px">Descargar CSV</button>
+        </a>
+      </div>
+      
 
 
     </div>
@@ -121,9 +127,11 @@ h1{
   <a href=detalleurl>
     <button type="submit" id="redirect" class="btn getResult btn-info btn-lg mb-2" style="display:none">Mostrar
       Detalles</button>
+     
   </a>
-
-
+  
+ 
+  
 
 
 </center>
