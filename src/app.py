@@ -26,9 +26,9 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'antiphish_db'
 
-# Models:
+# Modelos:
 from models.ModelUser import ModelUser
-# Entities:
+# Entidades:
 from models.entities.User import User
 db=MySQL(app)
 myCursor=mydb.cursor()
