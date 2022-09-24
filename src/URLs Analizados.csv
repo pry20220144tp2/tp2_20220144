@@ -1,7 +1,1 @@
 URL,ESTADO,CARACTERISTICAS
-https://github.com/marcosrm7/LibreriaTF_SEM9,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, -1]"
-https://tedboy.github.io/flask/generated/flask.send_from_directory.html,es URL seguro/legítimo,"[-1, 0, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 0, -1, 0, 1, -1, 1, 1, -1, 1, 1, -1, -1, 0, -1, 1, 1, -1]"
-https://www.youtube.com/,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
-https://www.twitch.tv/,es URL seguro/legítimo,"[-1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
-https://www.youtube.com/watch?v=lcJ9CSKwyWw,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, 0, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1]"
-,es un URL sospechoso de phishing,"[-1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, -1]"
