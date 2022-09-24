@@ -4,9 +4,9 @@ from .entities.User import User
 class ModelUser():
 
     @classmethod
-    def login(self, mysql, user):
+    def login(self, db, user):
         try:
-            cursor = mysql.connection.cursor()
+            cursor = db.connection.cursor()
             sql = """SELECT idAG, nombreAG, correoAG, passwordAG, rol FROM administrador_global 
                     WHERE nombreAG = '{}'""".format(user.nombre)
             cursor.execute(sql)
@@ -20,9 +20,9 @@ class ModelUser():
             raise Exception(ex)
 
     @classmethod
-    def get_by_id(self, mysql, id):
+    def get_by_id(self, db, id):
         try:
-            cursor = mysql.connection.cursor()
+            cursor = db.connection.cursor()
             sql = "SELECT idAG, nombreAG, rol FROM administrador_global WHERE idAG = {}".format(id)
             cursor.execute(sql)
             row = cursor.fetchone()

@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
-from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import os
@@ -12,7 +11,15 @@ from werkzeug.utils import secure_filename
 from functools import wraps
 from flask_login import LoginManager, login_user, logout_user, login_required
 from os import getcwd
+import mysql
+import mysql.connector
 app = Flask(__name__)
+mydb =mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="antiphish_db"
+)
 app.secret_key = 'qwerty'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'   
@@ -21,16 +28,15 @@ app.config['MYSQL_DB'] = 'antiphish_db'
 
 # Models:
 from models.ModelUser import ModelUser
-
 # Entities:
 from models.entities.User import User
-mysql = MySQL(app)
-
+db=MySQL(app)
+myCursor=mydb.cursor()
 login_manager_app = LoginManager(app)
 
 @login_manager_app.user_loader
 def load_user(id):
-    return ModelUser.get_by_id(mysql, id)
+    return ModelUser.get_by_id(db, id)
 
 
 
@@ -69,7 +75,7 @@ def login():
         # print(request.form['username'])
         # print(request.form['password'])
         user = User(0, request.form['nombre'], request.form['password'], 0)
-        logged_user = ModelUser.login(mysql, user)
+        logged_user = ModelUser.login(db, user)
         if logged_user != None:
             if logged_user.password:
                 login_user(logged_user)
@@ -95,7 +101,10 @@ def logout():
 @app.route('/usuarios')
 @login_required
 def usuarios():
-	return render_template('usuarios.html')
+    query = "SELECT nombreAG from administrador_global"
+    myCursor.execute(query)
+    result = myCursor.fetchall()
+    return render_template('usuarios.html', user=result)
 
     
 @app.route('/empresas')
@@ -106,7 +115,10 @@ def empresas():
 @app.route('/roles')
 @login_required
 def roles():
-    return render_template("roles.html")
+    query = "SELECT rol from administrador_global"
+    myCursor.execute(query)
+    result = myCursor.fetchall()
+    return render_template("roles.html", rol=result)
 
 @app.route('/correo')
 @login_required
@@ -133,7 +145,7 @@ def register():
         password = request.form['password']
         email = request.form['email']
         rol = request.form['rol']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor = db.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(
             'SELECT * FROM administrador_global WHERE correoAG = % s', (email, ))
         account = cursor.fetchone()
@@ -154,7 +166,7 @@ def register():
         else:
             cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s, % s)',
                            (userName, email, password, rol, ))
-            mysql.connection.commit()
+            db.connection.commit()
             mesage = 'Cuenta creada satisfactoriamente'
         return render_template('login.html', mesage=mesage)
 
