@@ -13,6 +13,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 from os import getcwd
 import mysql
 import mysql.connector
+
 app = Flask(__name__)
 mydb =mysql.connector.connect(
     host="localhost",
