@@ -16,16 +16,16 @@ import mysql.connector
 
 app = Flask(__name__)
 mydb =mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="antiphish_db"
+    host="us-cdbr-east-06.cleardb.net",
+    user="b9dec4cbe52ccf",
+    password="ba4250e5",
+    database="heroku_ec55da89162b7ce"
 )
 app.secret_key = 'qwerty'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'   
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'antiphish_db'
+app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+app.config['MYSQL_USER'] = 'b9dec4cbe52ccf'   
+app.config['MYSQL_PASSWORD'] = 'ba4250e5'
+app.config['MYSQL_DB'] = 'heroku_ec55da89162b7ce'
 
 # Modelos:
 from models.ModelUser import ModelUser
