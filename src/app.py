@@ -35,6 +35,11 @@ db=MySQL(app)
 myCursor=mydb.cursor()
 login_manager_app = LoginManager(app)
 
+
+query = "CREATE TABLE IF NOT EXISTS administrador_global (idAG INT AUTO_INCREMENT PRIMARY KEY, nombreAG  VARCHAR(40), correoAG VARCHAR(40), passwordAG VARCHAR(40), rol VARCHAR(40))"
+myCursor.execute(query)
+
+
 @login_manager_app.user_loader
 def load_user(id):
     return ModelUser.get_by_id(db, id)
