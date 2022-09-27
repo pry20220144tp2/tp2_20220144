@@ -108,3 +108,4 @@ Werkzeug==2.2.2
 whois==0.9.16
 WTForms==3.0.1
 zipp==3.8.1
+psycopg2-binary==2.9.3
