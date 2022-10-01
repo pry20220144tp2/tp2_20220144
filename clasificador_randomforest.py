@@ -11,7 +11,7 @@ import urls_analizados
 
 def getResult(url):
 
-    model = pickle.load(open('src/rfc_model', 'rb'))
+    model = pickle.load(open('rfc_model', 'rb'))
 
     x_input = url
     status = urls_analizados.url_search(x_input)
