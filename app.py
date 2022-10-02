@@ -160,7 +160,7 @@ def register():
         if account:
             mesage = 'La cuenta ya existe'
         elif not userName:
-            mesage = 'Por favor ingrese Nombre'
+            mesage = 'Por favor ingrese Nombre de Usuario'
         elif not re.match(r'[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s[a-zA-ZÀ-ÿ\\u00f1\\u00d1])*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$', userName):
             mesage = 'El nombre solo puede tener letras y máximo 1 palabra'
         elif not email:
