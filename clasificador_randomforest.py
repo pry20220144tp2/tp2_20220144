@@ -32,7 +32,7 @@ def getResult(url):
                 res = "es un URL sospechoso de phishing"
 
             else:
-                res = "es URL seguro/legítimo"
+                res = "es URL legítimo"
 
         except:
             print("¡Ocurrió una excepción!")
