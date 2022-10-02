@@ -26,6 +26,7 @@ app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
 app.config['MYSQL_USER'] = 'b9dec4cbe52ccf'   
 app.config['MYSQL_PASSWORD'] = 'ba4250e5'
 app.config['MYSQL_DB'] = 'heroku_ec55da89162b7ce'
+max_connections=500
 
 # Modelos:
 from models.ModelUser import ModelUser
