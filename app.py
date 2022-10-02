@@ -137,7 +137,9 @@ def user():
     if session['rol'] == "Administrador Global":
         return redirect(url_for('phishing'))
     elif session['rol'] == "Administrador de Red":
-        return "Hola, esta es la pantalla para el admin de red"
+        return redirect(url_for('phishing'))
+    elif session['rol'] == "Usuario":
+        return redirect(url_for('phishing'))
     else:
         return "hola"
 
