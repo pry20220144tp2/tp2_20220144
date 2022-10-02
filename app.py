@@ -171,12 +171,14 @@ def register():
             mesage = 'Por favor ingrese Contraseña'
         elif rol == "Escoge una opción":
             mesage = 'Por favor escoja un rol'
+        elif not userName and not email and not password and rol == "Escoge una opción":
+            mesage = 'Complete todos los campos'
         else:
             cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s, % s)',
                            (userName, email, password, rol, ))
             db.connection.commit()
             mesage = 'Cuenta creada satisfactoriamente'
-        return render_template('login.html', mesage=mesage)
+        return render_template('register.html', mesage=mesage)
 
     elif request.method == 'POST':
         mesage = 'Por favor complete el formulario'
