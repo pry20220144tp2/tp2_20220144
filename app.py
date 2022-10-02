@@ -171,6 +171,8 @@ def register():
             mesage = 'Por favor ingrese Contraseña'
         elif rol == "Escoge una opción":
             mesage = 'Por favor escoja un rol'
+        elif not userName and not email and not password and rol == "Escoge una opción":
+            mesage = 'Complete todos los campos'
         else:
             cursor.execute('INSERT INTO administrador_global VALUES (NULL,% s, % s, % s, % s)',
                            (userName, email, password, rol, ))
