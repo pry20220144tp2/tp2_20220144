@@ -13,7 +13,7 @@ def url_search(url):
         file_path = 'URLs Analizados.csv'
         if os.path.getsize(file_path) == 0:
 
-            header = ['URL', 'ESTADO','CARACTERISTICAS']
+            header = ['URL', 'ESTADO']
             writeCSV = csv.writer(f,delimiter=',')
             writeCSV.writerow(header)
             flag='False'
@@ -41,12 +41,11 @@ def url_search(url):
     else:   
         return 'NOT FOUND'
 
-def url_update(url,result,list):
+def url_update(url,result):
        
     data = []
     data.append(url)
     data.append(result)
-    data.append(list)
    
     with open('URLs Analizados.csv','a',newline='') as csvfile:
                 
